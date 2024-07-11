@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
-const product = mongoose.model('product', mongoose.Schema({
+const post = mongoose.model('product', mongoose.Schema({
     name: {
         type: String,
         required: true
     },
     price: {
-        type: Number,
+        type: String,
         required: true
-    },
-}));
+    }
+}))
 
-export default product;
+export default post

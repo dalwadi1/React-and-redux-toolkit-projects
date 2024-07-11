@@ -1,6 +1,16 @@
 import pro from "../Models/ProductModel.js";
 
+const getProduct = async (req, res) => {
+    const data = await pro.find({})
+
+    res.json({
+        status: true,
+        data: data
+    })
+}
+
 const addProduct = async (req, res) => {
+
     const { name, price } = req.body
 
     const addnewpro = pro({
@@ -19,5 +29,6 @@ const addProduct = async (req, res) => {
 }
 
 export default {
-    addProduct
+    addProduct,
+    getProduct
 }
