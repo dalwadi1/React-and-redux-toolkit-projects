@@ -11,4 +11,4 @@ const post = mongoose.model('product', mongoose.Schema({
     }
 }))
 
-export default post
+export default post   

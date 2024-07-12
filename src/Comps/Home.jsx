@@ -1,9 +1,23 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { checkLogin } from '../../Mycontext/loginContext'
+import { cartItems } from '../../Mycontext/cartContext'
 
 const Home = () => {
 
     const [product, setProduct] = useState(null)
+
+    const login = useContext(checkLogin)
+    const cart = useContext(cartItems)
+
+    const checkUserLogin = () => {
+
+        login.setLogin(true)
+    }
+
+    const addtoCart = (e) => {
+        cart.setCartitems([...cart.addcartItems, e])
+    }
 
     useEffect(() => {
         const getData = async () => {
@@ -21,6 +35,7 @@ const Home = () => {
                     <div className="text-center text-white">
                         <h1 className="display-4 fw-bolder">Shop in style</h1>
                         <p className="lead fw-normal text-white-50 mb-0">With this shop </p>
+                        <button onClick={checkUserLogin}>login</button>
                     </div>
                 </div>
             </header>
@@ -39,7 +54,7 @@ const Home = () => {
                                             </div>
                                         </div>
                                         <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                            <div className="text-center"><button className="btn btn-outline-dark mt-auto" onClick={() => { addtoCart(e) }}>Add to cart</button></div>
                                             {/* <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">Remove to cart</a></div> */}
                                         </div>
                                     </div>

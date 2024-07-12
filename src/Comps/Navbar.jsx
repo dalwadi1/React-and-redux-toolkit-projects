@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { cartItems } from '../../Mycontext/cartContext'
 
 const Navbar = () => {
+
+    const cart = useContext(cartItems)
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,7 +18,8 @@ const Navbar = () => {
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><Link className="dropdown-item" to="/all">All Products</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item" to="/popuitems">Popular Items</Link></li>
+                                <li><Link className="dropdown-item" to="/popuitems">Popular 
+                                Items</Link></li>
                                 {/* <li><a className="dropdown-item" href="#!">New Arrivals</a></li> */}
                             </ul>
                         </li>
@@ -23,7 +27,7 @@ const Navbar = () => {
                     <Link className="btn btn-outline-dark" to="/cart">
                         <i className="bi-cart-fill me-1"></i>
                         Cart
-                        <span className="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        <span className="badge bg-dark text-white ms-1 rounded-pill">{cart.addcartItems.length}</span>
                     </Link>
                 </div>
             </nav>
